@@ -6,14 +6,15 @@
     <description>Recent content on Suraj Subramanian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://surajsbmn.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://surajsbmn.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
-      <link>https://surajsbmn.github.io/posts/first-post/</link>
-      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
+      <title>Ubuntu Cloud Init Template in Proxmox</title>
+      <link>https://surajsbmn.github.io/posts/proxmox-debian-cloudinit/</link>
+      <pubDate>Mon, 29 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://surajsbmn.github.io/posts/first-post/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+      <guid>https://surajsbmn.github.io/posts/proxmox-debian-cloudinit/</guid>
+      <description>A template is a fully pre-configured operating system image that can used to deploy KVM virtual machines. Creating a special template is usually preferred over cloning an existing VM. Deploying virtual machines from templates is blazing fast, very comfortable and if you use linked clones you can optimize your storage by using base images and thin-provisioning.
+Steps to create Ubuntu cloud init template in Proxmox Choose your Ubuntu Cloud Image (replace with the url of the one you chose from above)</description>
     </item>
     
     <item>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Ubuntu Cloud Init Template in Proxmox // Suraj Subramanian</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.111.3">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Suraj Subramanian" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.3c3c186cd62e563ad6e2f00a89dbee656ab912d1d46f856b5605dd0232521e2a.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu Cloud Init Template in Proxmox"/>
+<meta name="twitter:description" content="A template is a fully pre-configured operating system image that can used to deploy KVM virtual machines. Creating a special template is usually preferred over cloning an existing VM. Deploying virtual machines from templates is blazing fast, very comfortable and if you use linked clones you can optimize your storage by using base images and thin-provisioning.
+Steps to create Ubuntu cloud init template in Proxmox Choose your Ubuntu Cloud Image (replace with the url of the one you chose from above)"/>
+
+    <meta property="og:title" content="Ubuntu Cloud Init Template in Proxmox" />
+<meta property="og:description" content="A template is a fully pre-configured operating system image that can used to deploy KVM virtual machines. Creating a special template is usually preferred over cloning an existing VM. Deploying virtual machines from templates is blazing fast, very comfortable and if you use linked clones you can optimize your storage by using base images and thin-provisioning.
+Steps to create Ubuntu cloud init template in Proxmox Choose your Ubuntu Cloud Image (replace with the url of the one you chose from above)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://surajsbmn.github.io/posts/proxmox-debian-cloudinit/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-29T00:00:00+00:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://surajsbmn.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="Suraj Subramanian" /></a>
+      <span class="app-header-title">Suraj Subramanian</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+      </nav>
+      <p>Software Developer</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/surajsbmn" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Ubuntu Cloud Init Template in Proxmox</h1>
+      <div class="post-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          May 29, 2023
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://surajsbmn.github.io/tags/templates/">templates</a>
+              <a class="tag" href="https://surajsbmn.github.io/tags/proxmox/">Proxmox</a>
+              <a class="tag" href="https://surajsbmn.github.io/tags/homelab/">Homelab</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>A template is a fully pre-configured operating system image that can used to deploy KVM virtual machines. Creating a special template is usually preferred over cloning an existing VM.
+Deploying virtual machines from templates is blazing fast, very comfortable and if you use linked clones you can optimize your storage by using base images and thin-provisioning.</p>
+<h4 id="steps-to-create-ubuntu-cloud-init-template-in-proxmox">Steps to create Ubuntu cloud init template in Proxmox</h4>
+<p>Choose your <a href="https://cloud-images.ubuntu.com/">Ubuntu Cloud Image</a> (replace with the url of the one you chose from above)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
+</span></span></code></pre></div><p>Create a new virtual machine. Here 9000 is just a VM id for the template, you can set it to anything you want but make sure change the id in other commands. The memory and cpu you set will be the initial value of the clone and can be increased later.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qm create <span style="color:#ae81ff">9000</span> --memory <span style="color:#ae81ff">2048</span> --core <span style="color:#ae81ff">2</span> --name ubuntu-cloud --net0 virtio,bridge<span style="color:#f92672">=</span>vmbr0
+</span></span></code></pre></div><p>Import the downloaded Ubuntu disk to local-lvm storage</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qm importdisk <span style="color:#ae81ff">9000</span> jammy-server-cloudimg-amd64.img local-lvm
+</span></span></code></pre></div><p>Attach the new disk to the VM as a scsi drive on the SCSI controller</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qm set <span style="color:#ae81ff">9000</span> --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-0
+</span></span></code></pre></div><p>Add cloud init drive</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qm set <span style="color:#ae81ff">9000</span> --ide2 local-lvm:cloudinit
+</span></span></code></pre></div><p>Make the cloud init drive bootable and restrict BIOS to boot from disk only</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qm set <span style="color:#ae81ff">9000</span> --boot c --bootdisk scsi0
+</span></span></code></pre></div><p>Add serial console</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qm set <span style="color:#ae81ff">9000</span> --serial0 socket --vga serial0
+</span></span></code></pre></div><p><strong>DO NOT START YOUR VM</strong></p>
+<p>Now, configure hardware and cloud init, then create a template and clone. If you want to expand your hard drive you can on this base image before creating a template or after you clone a new machine.</p>
+<p>Create template.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qm template <span style="color:#ae81ff">9000</span>
+</span></span></code></pre></div><p>Clone template.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qm clone <span style="color:#ae81ff">9000</span> <span style="color:#ae81ff">150</span> --name myclone --full
+</span></span></code></pre></div>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
