@@ -1,0 +1,6 @@
++++
+title="About me"
++++
+ 
+
+Tech enthusiast with a passion for building innovative solutions. As a skilled full-stack developer with expertise in Java, Python, Spring framework, and more, I thrive in fast-paced environments where no two days are the same. With a strong background in front-end development using Angular, I've also worked with data visualization tools like Grafana to bring insights to life. In the realm of microservices, I've leveraged Spring framework to design and implement scalable, distributed systems that drive business value. Currently, I'm driving application development and tooling for VMware's Global Labs platform, where I get to leverage my skills in micro-services, RESTful APIs, Kubernetes, and VMware vCenter and vCloud Director. Outside of work, I'm an avid enthusiast of Home labs, where I experiment with self-hosting, Proxmox, NAS, and other technologies to push the boundaries of what's possible in a personal setup. With a keen eye for emerging trends and a hunger to learn, I'm always looking for ways to apply my skills to real-world problems. Let's connect and explore the future of tech together!
