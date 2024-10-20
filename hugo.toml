@@ -1,4 +1,4 @@
-baseURL = 'https://surajsbmn.com'
+baseURL = 'https://surajsbmn.com/blog'
 languageCode = 'en-us'
 title = 'Suraj Subramanian'
 theme = "re-terminal"
